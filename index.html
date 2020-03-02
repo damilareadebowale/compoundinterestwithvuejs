@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>VueJs Compound Interest</title>
+</head>
+<body>
+    <div id="app">
+        <form>
+            <p>
+                <label for="principalamount">PRINCIPAL</label>
+                <input
+                v-model="principalamount"
+                type="number"
+                placeholder="Enter the principal amount"
+                >
+            </p>
+
+            <p>
+                <label for="interestrate">RATE</label><br>
+                <input 
+                v-model="interestrate"
+                type="number"
+                placeholder="Enter rate as decimal"
+                >
+            </p>
+
+            <p>
+                <label for="time">TIME PERIOD</label>
+                <input
+                v-model="time"
+                type="number"
+                placeholder=""
+                >
+            </p>
+
+            <p>
+                <label for="numberCompoundInterest">COMPOUNDED</label>
+                <input
+                v-model="numberCompoundInterest"
+                type="number"
+                placeholder=""
+                >
+            </p>
+
+            <p>
+                Final Amount equals : {{ total() }}
+            </p>
+        </form>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                principalamount:'',
+                interestrate:'',
+                time:'',
+                numberCompoundInterest:''
+            },
+            methods: {
+                total: function (){
+                    return (this.principalamount * Math.pow((1 + (this.interestrate/this.numberCompoundInterest)),(this.numberCompoundInterest * this.time)))
+                }
+            }
+        })
+    </script>
+</body>
+</html>
